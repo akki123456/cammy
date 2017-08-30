@@ -22,6 +22,8 @@ public class WriteFilefromQueue implements Runnable{
 	@Override
 	public void run() {
 		try {
+			File dir = new File(dnFilePathouput);
+			dir.mkdirs();
 			FileWriter fw = new FileWriter(dnFilePathouput+File.separator+"NormalizedOutput.file");
 			while(!(queue.isEmpty()&&DataNormalizer.flag)){
 				String line = queue.poll(5, TimeUnit.SECONDS);
